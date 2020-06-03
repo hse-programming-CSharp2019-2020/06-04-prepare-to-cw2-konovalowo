@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EKRLib
 {
+    /// <summary>
+    /// Класс, описывающий материальный объект
+    /// </summary>
     [DataContract]
     public class Item : IComparable<Item>
     {

@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace EKRLib
 {
+    /// <summary>
+    /// Класс, описывающий коллекцию объектов Item
+    /// </summary>
+    /// <typeparam name="T">Объект Item или производный</typeparam>
     [DataContract]
     public class Collection<T> where T: Item 
     {
@@ -23,6 +27,10 @@ namespace EKRLib
             items = new List<T>();
         }
 
+        /// <summary>
+        /// Добавляет Item в коллекцию
+        /// </summary>
+        /// <param name="item">Новый объект</param>
         public void Add(T item) => items.Add(item);
 
         public IEnumerator<T> GetEnumerator()

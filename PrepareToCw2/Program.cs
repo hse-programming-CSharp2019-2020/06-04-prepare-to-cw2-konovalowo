@@ -40,7 +40,11 @@ namespace PrepareToCw2
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
         }
 
-
+        /// <summary>
+        /// Считывает целочисленное значение
+        /// </summary>
+        /// <param name="prompt">Подсказка</param>
+        /// <returns>Введённое значение</returns>
         public static int ReadInt(string prompt)
         {
             int n;
@@ -51,6 +55,10 @@ namespace PrepareToCw2
             return n;
         }
 
+        /// <summary>
+        /// Создаёт объект Box
+        /// </summary>
+        /// <returns>Созданный объект</returns>
         public static Box GenerateBox()
         {
             return new Box(NextDoubleInInterval(-3, 10),
@@ -59,11 +67,22 @@ namespace PrepareToCw2
                 NextDoubleInInterval(-3, 10));
         }
 
+        /// <summary>
+        /// Генерирует вещественное число в полуинтервале [min, max)
+        /// </summary>
+        /// <param name="min">Минимальное значение</param>
+        /// <param name="max">Максимальное значение</param>
+        /// <returns>Созданное число</returns>
         public static double NextDoubleInInterval(int min, int max)
         {
             return rnd.NextDouble() + rnd.Next(min, max - 1);
         }
 
+        /// <summary>
+        /// Заполняет список объектов Box
+        /// </summary>
+        /// <param name="boxes">Ссылка на список</param>
+        /// <param name="n">Количество элементов для добавления</param>
         private static void GenerateListOfKorobochek(EKRLib.Collection<Box> boxes, int n)
         {
             while (boxes.Count != n + 1)
@@ -80,6 +99,10 @@ namespace PrepareToCw2
             }
         }
 
+        /// <summary>
+        /// Сериализует список объектов Box в Json
+        /// </summary>
+        /// <param name="boxes">Список объектов</param>
         private static void SerializeKorobochki(EKRLib.Collection<Box> boxes)
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(boxes.GetType());

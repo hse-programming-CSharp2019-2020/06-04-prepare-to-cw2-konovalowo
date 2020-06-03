@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace EKRLib
 {
+    /// <summary>
+    /// Класс, описывающий коробочку
+    /// </summary>
     [DataContract]
     public class Box : Item
     {
@@ -62,6 +65,10 @@ namespace EKRLib
             C = c;
         }
 
+        /// <summary>
+        /// Возвращает наибольшую сторону коробочки
+        /// </summary>
+        /// <returns>Наибольшая сторона коробочки</returns>
         public double GetLongestSideSize() => Math.Max(a, Math.Max(b, c));
 
         public override string ToString()

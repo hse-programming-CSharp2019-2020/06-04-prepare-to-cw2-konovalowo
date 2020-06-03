@@ -13,14 +13,12 @@ namespace EKRLib
     /// </summary>
     /// <typeparam name="T">Объект Item или производный</typeparam>
     [DataContract]
-    public class Collection<T> where T: Item 
+    public class Collection<T> : IEnumerable<T> where T: Item 
     {
         [DataMember]
         List<T> items;
 
         public int Count => items.Count();
-
-        public List<T> Items => items;
 
         public Collection()
         {
@@ -36,6 +34,11 @@ namespace EKRLib
         public IEnumerator<T> GetEnumerator()
         {
             return new CollectionEnumerator<T>(items.ToArray());
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

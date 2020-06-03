@@ -40,7 +40,7 @@ namespace PrepareToCw22
 
         private static void LinqQueryListOfMaxWeightItems(Collection<Box> boxes)
         {
-            var linq3 = boxes.Items.Where(b => b.Weight == boxes.Items.Max(i => i.Weight));
+            var linq3 = boxes.Where(b => b.Weight == boxes.Max(i => i.Weight));
             Console.WriteLine($"Количество: {linq3.Count()}");
             foreach (var item in linq3)
             {
@@ -50,7 +50,7 @@ namespace PrepareToCw22
 
         private static void LinqQueryGroupByWeight(Collection<Box> boxes)
         {
-            var linq2 = boxes.Items.GroupBy(i => i.Weight);
+            var linq2 = boxes.GroupBy(i => i.Weight);
             foreach (var list in linq2)
             {
                 Console.WriteLine($"Maccа: {list.Key:f3}");
@@ -63,9 +63,9 @@ namespace PrepareToCw22
 
         private static void LinqQueryMaxDimensionOverThreeOrderByMaxDimension(Collection<Box> boxes)
         {
-            var linq1 = boxes.Items.Where(i => i.GetLongestSideSize() > 3)
-                                   .OrderByDescending(i => i.GetLongestSideSize())
-                                   .Select(i => i);
+            var linq1 = boxes.Where(i => i.GetLongestSideSize() > 3)
+                            .OrderByDescending(i => i.GetLongestSideSize())
+                            .Select(i => i);
             foreach (var item in linq1)
             {
                 Console.WriteLine(item);
